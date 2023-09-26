@@ -1,0 +1,3 @@
+[submodule "Backend/Backend"]
+	path = Backend/Backend
+	url = git@github.com:RunAppHackaton/ProfileService.git
