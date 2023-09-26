@@ -1,0 +1,116 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'discovery-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['discovery-service:8761']
+        labels:
+          application: 'Discovery Server Application'
+
+  - job_name: 'gps-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['gps-service:1000']
+        labels:
+          application: 'GpsService Application'
+
+  - job_name: 'auth-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['auth-service:2000']
+        labels:
+          application: 'AuthService Application'
+
+  - job_name: 'api-gateway'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['api-gateway:3000']
+        labels:
+          application: 'Api Gateway Application'
+
+  - job_name: 'profile-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['profile-service:4000']
+        labels:
+          application: 'ProfileService Application'
+
+  - job_name: 'admin-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['admin-service:6000']
+        labels:
+          application: 'AdminService Application'
+
+  - job_name: 'social-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['social-service:5000']
+        labels:
+          application: 'SocialService Application'
+
+  - job_name: 'workout-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['workout-service:7000']
+        labels:
+          application: 'WorkoutService Application'
+
+  - job_name: 'guild-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['guild-service:8000']
+        labels:
+          application: 'GuildService Application'
+
+  - job_name: 'event-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['event-service:9000']
+        labels:
+          application: 'EventService Application'
+
+  - job_name: 'shoes-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['shoes-service:2222']
+        labels:
+          application: 'ShoesService Application'
+
+  - job_name: 'achievement-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['achievement-service:3333']
+        labels:
+          application: 'AchievementService Application'
+
+  - job_name: 'story-manager-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['story-manager-service:4444']
+        labels:
+          application: 'StoryManagerService Application'
+
+  - job_name: 'story-progress-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['story-progress-service:5555']
+        labels:
+          application: 'StoryProgressService Application'
+
+  - job_name: 'prometheus'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['prometheus:9090']
+        labels:
+          application: 'Prometheus Application'
+
+  - job_name: 'storage-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['storage-service:6500']
+        labels:
+          application: 'StorageService Application'

@@ -1,0 +1,235 @@
+version: '3'
+
+services:
+
+  db:
+    container_name: postgres-story-manager
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=Run_App
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=25032001
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+    networks:
+      - backend
+
+  profile-service:
+    container_name: profile-service
+    image: denpool/profile-service:0.0.1
+    restart: always
+    ports:
+      - "4000:4000"
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - STORAGE-DIRECTORY=ProfileService/
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  social-service:
+    container_name: social-service
+    image: denpool/social-service:0.0.1
+    ports:
+      - "5000:5000"
+    environment:
+      - SPRING_MAIL_USERNAME=runapp1234@gmail.com
+      - SPRING_MAIL_PASSWORD=qgcoclajkzvdwkcu
+    depends_on:
+      discovery-service:
+        condition: service_started
+    networks:
+      - backend
+
+  guild-service:
+    container_name: guild-service
+    image: denpool/guild-service:0.0.1
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - STORAGE-DIRECTORY=ProfileService/
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORY_MANAGER_SERVICE_URL=http://story-manager-service:4444
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_PROFILE_SERVICE_URL=http://profile-service:4000
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  shoes-service:
+    container_name: shoes-service
+    image: denpool/shoes-service:0.0.1
+    restart: always
+    ports:
+      - "2222:2222"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - STORAGE-DIRECTORY=ShoesService/
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+    networks:
+      - backend
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  achievement-service:
+    container_name: achievement-service
+    image: denpool/achievement-service:0.0.1
+    ports:
+      - "3333:3333"
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - STORAGE-DIRECTORY=AchievementService/
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORY-MANAGER-SERVICE_URL=http://story-manager-service:4444
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  story-manager-service:
+    container_name: story-manager-service
+    image: denpool/story-manager-service:0.0.1
+    ports:
+      - "6500:4444"
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - STORAGE-DIRECTORY=StoryManagerService/
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:4444
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  story-progress-service:
+    container_name: story-progress-service
+    image: denpool/story-progress-service:0.0.1
+    ports:
+      - "5555:5555"
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  workout-service:
+    container_name: workout-service
+    image: denpool/workout-service:0.0.1
+    ports:
+      - "7000:7000"
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_ACHIEVEMENT-SERVICE_URL=http://achievement-service:3333
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_PROFILE-SERVICE_URL=http://profile-service:4000
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_GUILD-SERVICE_URL=http://guild-service:8000
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_SHOES-SERVICE_URL=http://shoes-service:2222
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  discovery-service:
+    container_name: discovery-service
+    image: denpool/discovery-service
+    restart: always
+    ports:
+      - "7777:8761"
+    networks:
+      - backend
+    depends_on:
+      zipkin:
+        condition: service_healthy
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.37.1
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - backend
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - backend
+
+  storage-service:
+    container_name: storage-service
+    image: denpool/storage-service:0.0.1
+    restart: always
+    networks:
+      - backend
+    ports:
+      - "4444:6500"
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss:8.5.2
+    restart: always
+    ports:
+      - "8888:3000"
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    networks:
+      - backend
+    depends_on:
+      prometheus:
+        condition: service_started
+
+networks:
+  backend:
+volumes:
+  db-data:
