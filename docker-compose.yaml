@@ -2,6 +2,17 @@ version: '3'
 
 services:
 
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_DATABASE=tests
+    ports:
+      - "3307:3306"
+    networks:
+      - backend
+
   db:
     container_name: postgres-story-manager
     image: postgres
@@ -228,6 +239,32 @@ services:
     depends_on:
       prometheus:
         condition: service_started
+
+  event-service:
+    container_name: event-service
+    depends_on:
+      - mysqldb
+    image: denpool/event-service:0.0.1
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url" : "jdbc:mysql://mysqldb:${MYSQLDB_DOCKER_PORT}/${MYSQLDB_DATABASE}?serverTimezone=UTC",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "12345",
+        "spring.jpa.hibernate.ddl-auto" : "update",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8Dialect"
+      }'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 7000:8080
+    networks:
+      - backend
 
 networks:
   backend:
