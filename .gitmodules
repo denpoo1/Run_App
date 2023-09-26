@@ -1,3 +1,36 @@
 [submodule "Backend/SocialService"]
 	path = Backend/SocialService
 	url = git@github.com:RunAppHackaton/SocialService.git
+[submodule "Backend/Profile-Service"]
+	path = Backend/Profile-Service
+	url = git@github.com:RunAppHackaton/ProfileService.git
+[submodule "Backend/Storage-Service"]
+	path = Backend/Storage-Service
+	url = git@github.com:RunAppHackaton/StorageService.git
+[submodule "Backend/Achievement-Service"]
+	path = Backend/Achievement-Service
+	url = git@github.com:RunAppHackaton/AchievementService.git
+[submodule "Backend/StoryProgress-Service"]
+	path = Backend/StoryProgress-Service
+	url = git@github.com:RunAppHackaton/StoryProgressService.git
+[submodule "Backend/Shoes-Service"]
+	path = Backend/Shoes-Service
+	url = git@github.com:RunAppHackaton/ShoesService.git
+[submodule "Backend/Guild-Service"]
+	path = Backend/Guild-Service
+	url = git@github.com:RunAppHackaton/GuildService.git
+[submodule "Backend/Event-Service"]
+	path = Backend/Event-Service
+	url = git@github.com:RunAppHackaton/EventService.git
+[submodule "Backend/Workout-Service"]
+	path = Backend/Workout-Service
+	url = git@github.com:RunAppHackaton/WorkoutService.git
+[submodule "Backend/StoryManagement-Service"]
+	path = Backend/StoryManagement-Service
+	url = git@github.com:RunAppHackaton/StoryManagementService.git
+[submodule "Backend/Diskovery-Service"]
+	path = Backend/Diskovery-Service
+	url = git@github.com:RunAppHackaton/DiskoveryService.git
+[submodule "Backend/Api-Gateway"]
+	path = Backend/Api-Gateway
+	url = git@github.com:RunAppHackaton/Api-Gateway.git
