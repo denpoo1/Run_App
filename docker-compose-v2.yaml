@@ -64,8 +64,6 @@ services:
     container_name: profile-service
     image: denpool/profile-service:0.0.1
     restart: always
-    ports:
-      - "4000:4000"
     networks:
       - backend
     environment:
@@ -82,8 +80,6 @@ services:
   social-service:
     container_name: social-service
     image: denpool/social-service:0.0.1
-    ports:
-      - "5000:5000"
     environment:
       - SPRING_MAIL_USERNAME=runapp1234@gmail.com
       - SPRING_MAIL_PASSWORD=qgcoclajkzvdwkcu
@@ -97,8 +93,6 @@ services:
     container_name: guild-service
     image: denpool/guild-service:0.0.1
     restart: always
-    ports:
-      - "8000:8000"
     networks:
       - backend
     environment:
@@ -118,8 +112,6 @@ services:
     container_name: shoes-service
     image: denpool/shoes-service:0.0.1
     restart: always
-    ports:
-      - "2222:2222"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create
@@ -136,8 +128,6 @@ services:
   achievement-service:
     container_name: achievement-service
     image: denpool/achievement-service:0.0.1
-    ports:
-      - "3333:3333"
     networks:
       - backend
     environment:
@@ -155,8 +145,6 @@ services:
   story-manager-service:
     container_name: story-manager-service
     image: denpool/story-manager-service:0.0.1
-    ports:
-      - "4444:4444"
     networks:
       - backend
     environment:
@@ -173,8 +161,6 @@ services:
   story-progress-service:
     container_name: story-progress-service
     image: denpool/story-progress-service:0.0.1
-    ports:
-      - "5555:5555"
     networks:
       - backend
     environment:
@@ -189,8 +175,6 @@ services:
   workout-service:
     container_name: workout-service
     image: denpool/workout-service:0.0.1
-    ports:
-      - "7000:7000"
     networks:
       - backend
     environment:
@@ -247,8 +231,6 @@ services:
     restart: always
     networks:
       - backend
-    ports:
-      - "6500:6500"
     depends_on:
       discovery-service:
         condition: service_started
@@ -275,8 +257,6 @@ services:
     depends_on:
       - mysqldb
     image: denpool/event-service:0.0.1
-    ports:
-      - "9000:9000"
     networks:
       - backend
     environment:
