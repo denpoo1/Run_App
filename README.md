@@ -80,6 +80,31 @@ docker-compose down
 
 9. This stops and removes the containers.
 
+## All links available when running the application in docker:
+
+## Services Swagger
+
+- **profile-service:** [http://localhost:4000/swagger-ui/index.html](http://localhost:4000/swagger-ui/index.html)
+- **social-service:** [http://localhost:5000/swagger-ui/index.html](http://localhost:5000/swagger-ui/index.html)
+- **workout-service:** [http://localhost:7000/swagger-ui/index.html](http://localhost:7000/swagger-ui/index.html)
+- **guild-service:** [http://localhost:8000/swagger-ui/index.html](http://localhost:8000/swagger-ui/index.html)
+- **event-service:** [http://localhost:9000/swagger-ui/index.html](http://localhost:9000/swagger-ui/index.html)
+- **shoes-service:** [http://localhost:2222/swagger-ui/index.html](http://localhost:2222/swagger-ui/index.html)
+- **achievement-service:** [http://localhost:3333/swagger-ui/index.html](http://localhost:3333/swagger-ui/index.html)
+- **story-manager-service:** [http://localhost:4444/swagger-ui/index.html](http://localhost:4444/swagger-ui/index.html)
+- **story-progress-service:** [http://localhost:5555/swagger-ui/index.html](http://localhost:5555/swagger-ui/index.html)
+- **storage-service:** [http://localhost:6500/swagger-ui/index.html](http://localhost:6500/swagger-ui/index.html)
+
+## Additional Services
+
+- **Prometheus:** [http://localhost:9090](http://localhost:9090)
+- **Adminer:** [http://localhost:5656](http://localhost:5656)
+- **Zipkin:** [http://localhost:9411](http://localhost:9411)
+- **Eureka:** [http://localhost:7777](http://localhost:7777)
+- **Grafana:** [http://localhost:8888](http://localhost:8888)
+- **Keycloak:** [http://localhost:8080](http://localhost:8080)
+
+
 ## Usage 📝
 
 1. Sign in to your account or create a new one if you are a new customer.
@@ -120,8 +145,9 @@ Backend: [Denys Durbalov](https://www.linkedin.com/in/denpool/)
 
 Thank you for using the Your Bank Web Application! 💼🌐
 
-
 ## Presentation
+
+- Design uri: [figma](https://www.figma.com/file/MS2lV8CQ3amrEmEtQtrnLV/Elemental-Sprints%3A-Chasing-Relics?type=design&node-id=1%3A435&mode=design&t=imPGQNklqepDJPwc-1)
 
 ![Introduction](img/1.png)
 ![Design](img/2.png)
