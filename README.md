@@ -16,7 +16,7 @@ Our mission is simple: to transform running into an unforgettable experience. Jo
 
 ## System design 
 
-![System-Design](img\5.png)
+![System-Design](img/5.png)
 
 - System Design Uri: https://excalidraw.com/#json=h8-3vOk6BO_fLnb-2On-c,axHckO_G9JvDFXL0oRTtEA
 
@@ -123,7 +123,7 @@ Thank you for using the Your Bank Web Application! 💼🌐
 
 ## Presentation
 
-![Introduction](img\1.png)
-![Design](img\2.png)
-![Functions](img\3.png)
-![Team](img\4.png) 😃🎨📋👥
+![Introduction](img/1.png)
+![Design](img/2.png)
+![Functions](img/3.png)
+![Team](img/4.png) 😃🎨📋👥
