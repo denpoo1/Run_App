@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ShoesService" />
+        <module name="StoryManagementService" />
+        <module name="ProfileService" />
+        <module name="SocialService" />
+        <module name="event-service" />
+        <module name="StoryProgressService" />
+        <module name="GuildService" />
+        <module name="AchievementService" />
+        <module name="DiscoveryService" />
+        <module name="Api-Gateway" />
+        <module name="WorkoutService" />
+        <module name="StorageService" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AchievementService" options="-parameters" />
+      <module name="Api-Gateway" options="-parameters" />
+      <module name="DiscoveryService" options="-parameters" />
+      <module name="GuildService" options="-parameters" />
+      <module name="ProfileService" options="-parameters" />
+      <module name="ShoesService" options="-parameters" />
+      <module name="SocialService" options="-parameters" />
+      <module name="StorageService" options="-parameters" />
+      <module name="StoryManagementService" options="-parameters" />
+      <module name="StoryProgressService" options="-parameters" />
+      <module name="WorkoutService" options="-parameters" />
+      <module name="event-service" options="-parameters" />
+    </option>
+  </component>
+</project>
