@@ -2,17 +2,8 @@ version: '3'
 
 services:
 
-  mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
-    environment:
-      - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_DATABASE=tests
-    networks:
-      - backend
-
   db:
-    container_name: postgres-story-manager
+    container_name: mysqldb
     image: postgres
     restart: always
     environment:
@@ -39,6 +30,7 @@ services:
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: password
 
+
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:18.0.0
@@ -60,65 +52,55 @@ services:
     depends_on:
       - keycloak-mysql
 
+
   profile-service:
     container_name: profile-service
-    image: denpool/profile-service:0.0.1
+    image: denpool/profile-service:0.0.2
     restart: always
     networks:
       - backend
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=25032001
-      - STORAGE-DIRECTORY=ProfileService/
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     depends_on:
       discovery-service:
         condition: service_started
+
 
   social-service:
     container_name: social-service
-    image: denpool/social-service:0.0.1
+    image: denpool/social-service:0.0.2
     environment:
-      - SPRING_MAIL_USERNAME=runapp1234@gmail.com
-      - SPRING_MAIL_PASSWORD=qgcoclajkzvdwkcu
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     depends_on:
       discovery-service:
         condition: service_started
     networks:
       - backend
+
 
   guild-service:
     container_name: guild-service
-    image: denpool/guild-service:0.0.1
+    image: denpool/guild-service:0.0.2
     restart: always
     networks:
       - backend
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=25032001
-      - STORAGE-DIRECTORY=ProfileService/
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORY_MANAGER_SERVICE_URL=http://story-manager-service:4444
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_PROFILE_SERVICE_URL=http://profile-service:4000
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     depends_on:
       discovery-service:
         condition: service_started
 
+
   shoes-service:
     container_name: shoes-service
-    image: denpool/shoes-service:0.0.1
+    image: denpool/shoes-service:0.0.2
     restart: always
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=25032001
-      - STORAGE-DIRECTORY=ShoesService/
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     networks:
       - backend
     depends_on:
@@ -142,51 +124,41 @@ services:
       discovery-service:
         condition: service_started
 
+
   story-manager-service:
     container_name: story-manager-service
-    image: denpool/story-manager-service:0.0.1
+    image: denpool/story-manager-service:0.0.2
     networks:
       - backend
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=25032001
-      - STORAGE-DIRECTORY=StoryManagerService/
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:4444
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     depends_on:
       discovery-service:
         condition: service_started
+
 
   story-progress-service:
     container_name: story-progress-service
-    image: denpool/story-progress-service:0.0.1
+    image: denpool/story-progress-service:0.0.2
     networks:
       - backend
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=25032001
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     depends_on:
       discovery-service:
         condition: service_started
 
+
   workout-service:
     container_name: workout-service
-    image: denpool/workout-service:0.0.1
+    image: denpool/workout-service:0.0.2
     networks:
       - backend
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=25032001
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_ACHIEVEMENT-SERVICE_URL=http://achievement-service:3333
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_PROFILE-SERVICE_URL=http://profile-service:4000
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_GUILD-SERVICE_URL=http://guild-service:8000
-      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_SHOES-SERVICE_URL=http://shoes-service:2222
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
     depends_on:
       discovery-service:
         condition: service_started
@@ -195,8 +167,6 @@ services:
     container_name: discovery-service
     image: denpool/discovery-service
     restart: always
-    ports:
-      - "7777:8761"
     networks:
       - backend
     depends_on:
@@ -252,21 +222,24 @@ services:
       prometheus:
         condition: service_started
 
+
   event-service:
     container_name: event-service
-    depends_on:
-      - mysqldb
-    image: denpool/event-service:0.0.1
+    image: denpool/event-service:0.0.3
     networks:
       - backend
     environment:
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url" : "jdbc:mysql://mysqldb:${MYSQLDB_DOCKER_PORT}/${MYSQLDB_DATABASE}?serverTimezone=UTC",
-        "spring.datasource.username" : "root",
-        "spring.datasource.password" : "12345",
-        "spring.jpa.hibernate.ddl-auto" : "update",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8Dialect"
-      }'
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+
+  config-service:
+    container_name: config-service
+    image: denpool/config-service:0.0.1
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/RunAppHackaton/MicroservicesConfigs.git
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
 
   api-gateway:
     container_name: api-gateway
@@ -284,6 +257,84 @@ services:
     restart: always
     ports:
       - "5656:8080"
+    networks:
+      - backend
+
+  zookeeper:
+    container_name: zookeeper
+    image: confluentinc/cp-zookeeper:5.5.3
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - backend
+
+  kafka:
+    container_name: kafka
+    image: confluentinc/cp-enterprise-kafka:5.5.3
+    depends_on: [ zookeeper ]
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_BROKER_ID: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_JMX_PORT: 9991
+    networks:
+      - backend
+
+  debezium-potgres-connector:
+    container_name: debezium-potgres-connector
+    image: debezium/connect:1.4
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: connect_configs
+      OFFSET_STORAGE_TOPIC: connect_offsets
+      KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+    depends_on: [ kafka ]
+    networks:
+      - backend
+
+  schema-registry:
+    container_name: schema-registry
+    image: confluentinc/cp-schema-registry:5.5.3
+    environment:
+      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181
+      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
+      - SCHEMA_REGISTRY_LISTENERS=http://schema-registry:8081,http://localhost:8081
+    depends_on: [ zookeeper, kafka ]
+    networks:
+      - backend
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+    environment:
+      - discovery.type=single-node
+    networks:
+      - backend
+
+  logstash:
+    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:7.14.0
+    volumes:
+      - ./logstash-config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    command: logstash -f /usr/share/logstash/pipeline/logstash.conf
+    networks:
+      - backend
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.10.2
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
+    environment:
+      SERVER_NAME: kibana.example.org
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
     networks:
       - backend
 
