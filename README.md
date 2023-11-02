@@ -18,7 +18,7 @@ Our mission is simple: to transform running into an unforgettable experience. Jo
 
 ![System-Design](img/5.png)
 
-- System Design Uri: https://excalidraw.com/#json=h8-3vOk6BO_fLnb-2On-c,axHckO_G9JvDFXL0oRTtEA
+- System Design Uri: https://excalidraw.com/#json=TOyaIM8phkDAz7M931kPj,YimDKiIDlzacgUpAPAwsdg
 
 ## Application Features
 
