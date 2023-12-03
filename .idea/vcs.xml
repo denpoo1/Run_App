@@ -4,6 +4,7 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Achievement-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Api-Gateway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Backend/ConfigService" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Diskovery-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Event-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Guild-Service" vcs="Git" />

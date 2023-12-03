@@ -1,0 +1,19 @@
+1. create vm instance
+2. instance start script
+3. vm volume
+4. create alerts
+5. tests
+6. explain to Denis
+
+1. Added new controllers
+2. Write tests
+3. Connect to Google DataBase
+4. CI/CD
+5. Cloud Run
+
+
+Сделать для тренировки таблицу с (удалением тренировки, добавление тренировки и так далее)
+Доделать рассылку на мэилы или мобильные устройства(возможно)
+
+подменить на интерфейсы
+перепроверка на паттерны(проверить вложенность некоторых классов )

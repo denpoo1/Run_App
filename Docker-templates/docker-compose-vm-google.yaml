@@ -1,0 +1,275 @@
+version: '3'
+
+services:
+
+  #############################################################################
+  ###### Data Bases ###########################################################
+  #############################################################################
+
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=Run_App
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=25032001
+    expose:
+      - 5432
+    networks:
+      - backend
+
+  #############################################################################
+  ###### Services #############################################################
+  #############################################################################
+
+  profile-service:
+    container_name: profile-service
+    image: denpool/profile-service:0.0.2
+    restart: always
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+
+  social-service:
+    container_name: social-service
+    image: denpool/social-service:0.0.2
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+    networks:
+      - backend
+
+
+  guild-service:
+    container_name: guild-service
+    image: denpool/guild-service:0.0.2
+    restart: always
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+
+  shoes-service:
+    container_name: shoes-service
+    image: denpool/shoes-service:0.0.2
+    restart: always
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    networks:
+      - backend
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+
+  achievement-service:
+    container_name: achievement-service
+    image: denpool/achievement-service:0.0.1
+    networks:
+      - backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/Run_App
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=25032001
+      - STORAGE-DIRECTORY=AchievementService/
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORAGE-SERVICE_URL=http://storage-service:6500
+      - SPRING_CLOUD_OPENFEIGN_CLIENT_CONFIG_STORY-MANAGER-SERVICE_URL=http://story-manager-service:4444
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+
+  story-manager-service:
+    container_name: story-manager-service
+    image: denpool/story-manager-service:0.0.2
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+
+  story-progress-service:
+    container_name: story-progress-service
+    image: denpool/story-progress-service:0.0.2
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_healthy
+
+
+  workout-service:
+    container_name: workout-service
+    image: denpool/workout-service:0.0.2
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_healthy
+
+
+  discovery-service:
+    container_name: discovery-service
+    image: denpool/discovery-service
+    restart: always
+    ports:
+      - "7777:8761"
+    networks:
+      - backend
+    depends_on:
+      zipkin:
+        condition: service_healthy
+
+
+  storage-service:
+    container_name: storage-service
+    image: denpool/storage-service:0.0.1
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+
+  event-service:
+    container_name: event-service
+    image: denpool/event-service:0.0.3
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8887
+      - SPRING_CLOUD_CONFIG_PROFILE=docker
+    depends_on:
+      config-service:
+        condition: service_started
+
+
+  config-service:
+    container_name: config-service
+    image: denpool/config-service:0.0.1
+    networks:
+      - backend
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/RunAppHackaton/MicroservicesConfigs.git
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+
+  api-gateway:
+    container_name: api-gateway
+    image: denpool/api-gateway:0.0.2
+    ports:
+      - "80:3000"
+    networks:
+      - backend
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8761/eureka
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+  #############################################################################
+  ###### Support Services #####################################################
+  #############################################################################
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.37.1
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./Configs/prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - backend
+    depends_on:
+      discovery-service:
+        condition: service_started
+
+
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - backend
+
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss:8.5.2
+    restart: always
+    volumes:
+      - ./Configs/grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    networks:
+      - backend
+    depends_on:
+      prometheus:
+        condition: service_started
+
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - "5656:8080"
+    networks:
+      - backend
+
+
+networks:
+  backend:
+
+
+
