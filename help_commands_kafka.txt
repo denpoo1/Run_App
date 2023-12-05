@@ -1,8 +1,0 @@
-kafka-console-consumer --bootstrap-server localhost:9092 --topic db.public.profile
-kafka-console-consumer --bootstrap-server localhost:9092 --topic db.public.team
-kafka-console-consumer --bootstrap-server localhost:9092 --topic db.public.training
-kafka-console-consumer --bootstrap-server localhost:9092 --topic db.public.training --from-beginning
-
-
-kafka-topics --list --bootstrap-server localhost:9092
-

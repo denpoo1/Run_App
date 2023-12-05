@@ -34,3 +34,12 @@
 [submodule "Backend/Api-Gateway"]
 	path = Backend/Api-Gateway
 	url = git@github.com:RunAppHackaton/Api-Gateway.git
+[submodule "Backend/Backend"]
+	path = Backend/Backend
+	url = git@github.com:RunAppHackaton/ConfigService.git
+[submodule "Backend/ConfigService"]
+	path = Backend/ConfigService
+	url = git@github.com:RunAppHackaton/ConfigService.git
+[submodule "Backend/MicroservicesConfigs"]
+	path = Backend/MicroservicesConfigs
+	url = git@github.com:RunAppHackaton/MicroservicesConfigs.git
