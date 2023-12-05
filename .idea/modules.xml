@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Run_App.iml" filepath="$PROJECT_DIR$/.idea/Run_App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Backend/Workout-Service/WorkoutService.iml" filepath="$PROJECT_DIR$/Backend/Workout-Service/WorkoutService.iml" />
     </modules>
   </component>
 </project>
