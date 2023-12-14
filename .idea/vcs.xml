@@ -8,6 +8,7 @@
     <mapping directory="$PROJECT_DIR$/Backend/Diskovery-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Event-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Guild-Service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Backend/MicroservicesConfigs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Profile-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/Shoes-Service" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/SocialService" vcs="Git" />
