@@ -1,56 +1,54 @@
-![Logo](https://media4.giphy.com/media/ya4eevXU490Iw/giphy.gif)
+![Logo](https://cdn.dribbble.com/users/352658/screenshots/2908467/cz_olympic-run_gif.gif)
 
-# Messenger
+# Run App 🏃‍♂️🏃‍♀️
 
-## Introduction
+Welcome to the Run App repository! This mobile application is your ticket to a new and exhilarating running adventure.
 
-Welcome to our project! We are a group of developers and designers working together on a mission. Our project focuses on crafting a messenger influenced by Telegram and WhatsApp. Our aim is to establish a user-friendly and secure space for messaging and sharing various media. This endeavor is tailored to suit the preferences of students, young individuals, and diverse interest-based communities. 😊🚀
+# About the Project 🔎
 
-## Project Overview
+**Introducing the Ultimate Running Adventure: Chasing Relics!**
 
-Our messenger will be available in two versions: a phone app and a computer version, ensuring seamless communication across platforms. 📱💻
+Are you tired of the same old running routine? Breathe new life into your fitness journey with Run App, the innovative app designed by a team of designers and programmers who are passionate about making your runs exhilarating.
 
-## Application Functions
+Step into a world where your daily jog becomes a thrilling quest! Explore the story, choose a playable role, conquer missions, and choose wisely. Our unique concept blends the world of running with the excitement of a quest game. Say goodbye to monotony and hello to adventure.
 
-Here's a brief overview of the key functions our messenger application offers:
+Our mission is simple: to transform running into an unforgettable experience. Join us in this exhilarating journey towards a healthier, fitter, and more adventurous you. Don’t just run; run with a purpose.
 
-- **User Registration:**
-  - Register users using phone numbers. 📱🔒
-  
-- **Messaging:**
-  - Send text, photos, videos, audio, and documents. 📷🎥🎧📄
-  - Edit or delete sent messages. ✏️🗑️
+# System design 🧮
 
-- **Group Chats:**
-  - Create group chats. 👫👫👫
-  - Add participants using group IDs. ➕👥
+![System-Design](img/5.png)
 
-- **One-to-One Chats:**
-  - Engage in one-to-one chats. 👥
+- Documentation describing the API and a description of each service : [swagger-ling](https://app.swaggerhub.com/apis/DenisDyrbalov/Run_App/1.0.0)
 
-- **Online Status:**
-  - Display online/offline status. 🟢🔴
-  - Show the last login timestamp. 🕒
+# Application Features 🧨
 
-- **User Settings:**
-  - Modify user settings, including login, password, and phone number. ⚙️📝📞
+### Workout Tracking & Analysis
+- The app records comprehensive workout data including distance, time, speed, heart rate, and more. And provides statistical analysis to help users track their fitness progress and achievements.
 
-- **User and Chat Search:**
-  - Search for users and chats by name or phone number. 🔍👤
+### Algorithm for building personal training
+- This feature is a tool for creating personalized running plans based on the user's individual characteristics. Running is a great way to stay fit, but every person is unique and so are their training needs. This feature allows you to create an optimal running plan based on various parameters such as fitness, training goals, injury history and other characteristics.
 
-## Installation 
+### Multiplayer Mode
+- The app allows users to create and join guilds, fostering a sense of community and healthy competition within a multiplayer mode.
 
-To run this web application locally, follow these steps:
+### Team Performance
+- Users can track team statistics and performance, promoting teamwork and competition within the app’s multiplayer mode.
 
-1. Clone this repository to your local machine:
+### History & Storytelling
+- The app features a story section. It includes four chapters, with three assignments. Users prepare for each assignment and advance their team by completing these tasks. After completing a task, the story continues, adding a captivating narrative layer to the running experience.
 
-```bash
-git clone https://github.com/illiamartynov/Bank_App.git
-```
+### Game Roles & Diverse Quests
+- Users have the option to choose from a range of three game roles within their guild. These roles allow users to experience the app’s story and quests from different perspectives. Each character has unique quests tailored to their role, enhancing the diversity and replayability of the app.
 
-## CI/CD
+### Shoe Analysis
+- The app offers a unique feature that analyzes the wear and tear on running shoes based on mileage and recommends replacements, ensuring users have the best gear for their runs.
 
-![CI/CD](img/6.png)
+### GPS Navigation
+- Users can access real-time route and location information, enhancing their running experience and ensuring they stay on track.
+
+# CI/CD ✅
+
+![Logo](img/6.png)
 
 Step 1. Build:
  -  Checkout the repository.
@@ -68,29 +66,96 @@ Step 3. Deploy to Docker Hub:
  - Set up Docker Buildx.
  - Login to Docker Hub.
  - Build Docker image and push it to Docker Hub.
-Step 4. ArgoCD Image Updater:
- - ArgoCD image updater monitors dockerhub for new container versions. If a new version of the container appears, it changes the kubernates manifest files and commits to the repository with the manifest files
+Step 4. Deploy to Google Cloud Run:
+ - Checkout the repository.
+ - Authenticate with Google using provided credentials.
+ - Install dependencies.
+ - Copy secrets from Google Secret Manager.
+ - Authenticate Docker with Google Artifact Registry.
+ - Generate a unique hash for the container image tag.
+ - Build and push container to Google Artifact Registry.
+ - Deploy the container to Cloud Run.
 
-Step 5. ArgoCD:
- - Monitors the Git repository with manifest files. If changes appear in the manifest files, deployment occurs to the kubernates cluster
+# Installation 🏁
 
-## Technologies Used
+To get started with the Run App, follow these steps:
 
-To bring this project to life, we utilized a variety of technologies:
+1. Open a Terminal or Command Prompt:
+   - If you're on Windows, you can use Command Prompt or PowerShell.
+   - On Linux or macOS, use the Terminal.
 
-- **Backend:** Java ☕
-- **Version Control:** Git 📜
-- **Database:** Posgres 🗃️
-- **DevOps tools:** Docker, ArgoCD, Github Actions, ArgoCD Image Updater, Kubernates  
-- **Application Framework:** Spring Boot, Spring Cloud, Spring WebSocket 🚀
-- **Metrics:** Grafana, Prometheus 🚀
-- **Distributed Tracing System:** Zipkin 🚀
-- **Api Documentation:** Swagger 📜
-- **Cloud Hosting:** Google Cloud ☁️
+2. Navigate to the Directory:
+   - Use the cd command to navigate to the directory where you saved the docker-compose.yml file.
+```bash
+cd /path/to/your/docker-compose-directory
+```
 
-Thank you for exploring our project, and we look forward to delivering a top-notch messaging experience for users across various platforms. 🌟
+3. Run Docker Compose:
+   - Execute the following command to start the Docker Compose process. Replace docker-compose.yml with the actual filename if it's different.
+```bash
+docker-compose up
+```
 
-## Contributing
+4. Wait for Completion:
+   - Docker will download the necessary images and start the containers. This might take some time depending on your internet connection.
+
+6. Access Your Application:
+   - Once the process completes, you should see output indicating that your application is running. Access it through a web browser or another specified method.
+
+8. Stopping the Containers:
+   - To stop the running containers, open a new terminal window, navigate to the same directory, and run:
+```bash
+docker-compose down
+```
+
+9. This stops and removes the containers.
+
+# All links available for the project:
+
+## Main Swagger(permanent documentation)
+General API documentation for all services, which is done every couple of weeks
+
+- **main swagger documentation:** [swagger-ling](https://app.swaggerhub.com/apis/DenisDyrbalov/Run_App/1.0.0)
+
+
+## Services Swagger(dynamic documentation)
+Dynamic API documentation that changes during application development and deployment to servers. You need to wait some time for the link to work (10-30 seconds). If after this time the link does not work, it means that we have temporarily turned off the database in the cloud to save money 😁
+
+- **profile-service:** [profile-service-ling-google-cloudrun](https://profile-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **social-service:** [social-service-ling-google-cloudrun](http://localhost:5000/swagger-ui/index.html)
+- **workout-service:** [workout-service-ling-google-cloudrun](https://workout-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **guild-service:** [guild-service-ling-google-cloudrun](https://guild-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **event-service:** [event-service-ling-google-cloudrun](https://event-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **shoes-service:** [shoes-service-ling-google-cloudrun](https://shoes-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **achievement-service:** [achievement-service-ling-google-cloudrun](https://achievement-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **story-manager-service:** [story-manager-service-ling-google-cloudrun](https://story-manager-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **story-progress-service:** [story-progress-service-ling-google-cloudrun](https://story-progress-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **storage-service:** [storage-service-ling-google-cloudrun](https://storage-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+
+## Additional Services
+
+- **Prometheus:** [http://localhost:9090](http://localhost:9090)
+- **Adminer:** [http://localhost:5656](http://localhost:5656)
+- **Zipkin:** [http://localhost:9411](http://localhost:9411)
+- **Eureka:** [http://localhost:7777](http://localhost:7777)
+- **Grafana:** [http://localhost:8888](http://localhost:8888)
+- **Keycloak:** [http://localhost:8080](http://localhost:8080)
+
+
+
+
+# Technologies Used 💻
+
+- **Frontend:** React.js, Axios
+- **Backend:** Spring Boot, Spring Cloud
+- **Google cloud :** Cloud Run, Container Registry, Google Secrets, IAM, SQL
+- **DevOps tools :** Docker, GitHub Actions, Shell Scripts, Grafana, Zipkin, Prometheus
+- **Database:** Postgres, MongoDB
+- **CSS Framework:** React Css modules
+- **Aditional Technologies:** Adminer, Keyclock, 
+
+
+# Contributing 🤝
 
 If you would like to contribute to the development of this web application, please follow these guidelines:
 
@@ -98,19 +163,24 @@ If you would like to contribute to the development of this web application, plea
 2. Create a new branch for your feature or bug fix: `git checkout -b feature-name`
 3. Make your changes and commit them: `git commit -m "Add feature-name"`
 4. Push your changes to your forked repository: `git push origin feature-name`
-5. Create a pull request to merge your changes into the main repository. 🛠️
+5. Create a pull request to merge your changes into the main repository.
 
-## Contact
+# Contact 📧
 
 If you have any questions or need assistance, please contact any of our team members:
 
-Frontend: [Illia Martynov](https://www.linkedin.com/in/illia-martynov-335800283/) 👨‍💻
+Frontend: [Illia Martynov](https://www.linkedin.com/in/illia-martynov-335800283/)
 
-Backend: [Denys Durbalov](https://www.linkedin.com/in/denpool/) 👨‍💻
+Backend: [Sviatoslav Pylyp](https://www.linkedin.com/in/denpool/)
 
-Thank you for using the Your Bank Web Application! 🙏
+Backend: [Denys Durbalov](https://www.linkedin.com/in/denpool/)
 
-## Presentation
+
+Thank you for using the Your Bank Web Application! 💼🌐
+
+# Presentation
+
+- Design uri: [figma](https://www.figma.com/file/MS2lV8CQ3amrEmEtQtrnLV/Elemental-Sprints%3A-Chasing-Relics?type=design&node-id=1%3A435&mode=design&t=imPGQNklqepDJPwc-1)
 
 ![Introduction](img/1.png)
 ![Design](img/2.png)
