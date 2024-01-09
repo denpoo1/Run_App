@@ -16,7 +16,7 @@ Our mission is simple: to transform running into an unforgettable experience. Jo
 
 # System design 🧮
 
-![System-Design](https://storage.cloud.google.com/github-resourses/5.png?authuser=1)
+![System-Design](img/5.png)
 
 - Documentation describing the API and a description of each service : [swagger-ling](https://app.swaggerhub.com/apis/DenisDyrbalov/Run_App/1.0.0)
 
@@ -48,7 +48,7 @@ Our mission is simple: to transform running into an unforgettable experience. Jo
 
 # CI/CD ✅
 
-![Logo](https://storage.cloud.google.com/github-resourses/Zrzut%20ekranu%202024-01-8%20o%2023.49.37.png?authuser=1)
+![Logo](img/6.png)
 
 Step 1. Build:
  -  Checkout the repository.
@@ -182,7 +182,7 @@ Thank you for using the Your Bank Web Application! 💼🌐
 
 - Design uri: [figma](https://www.figma.com/file/MS2lV8CQ3amrEmEtQtrnLV/Elemental-Sprints%3A-Chasing-Relics?type=design&node-id=1%3A435&mode=design&t=imPGQNklqepDJPwc-1)
 
-![Introduction](https://storage.cloud.google.com/github-resourses/1.png?authuser=1)
-![Design](https://storage.cloud.google.com/github-resourses/2.png?authuser=1)
-![Functions](https://storage.cloud.google.com/github-resourses/3.png?authuser=1)
-![Team](https://storage.cloud.google.com/github-resourses/4.png?authuser=1)
+![Introduction](img/1.png)
+![Design](img/2.png)
+![Functions](img/3.png)
+![Team](img/4.png)
