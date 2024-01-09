@@ -185,4 +185,4 @@ Thank you for using the Your Bank Web Application! 💼🌐
 ![Introduction](https://storage.cloud.google.com/github-resourses/1.png?authuser=1)
 ![Design](https://storage.cloud.google.com/github-resourses/2.png?authuser=1)
 ![Functions](https://storage.cloud.google.com/github-resourses/3.png?authuser=1)
-![Team](https://storage.cloud.google.com/github-resourses/4.png)
+![Team](https://storage.cloud.google.com/github-resourses/4.png?authuser=1)
