@@ -4,7 +4,7 @@
 
 Welcome to the Run App repository! This mobile application is your ticket to a new and exhilarating running adventure.
 
-## About the Project
+# About the Project 🔎
 
 **Introducing the Ultimate Running Adventure: Chasing Relics!**
 
@@ -14,13 +14,13 @@ Step into a world where your daily jog becomes a thrilling quest! Explore the st
 
 Our mission is simple: to transform running into an unforgettable experience. Join us in this exhilarating journey towards a healthier, fitter, and more adventurous you. Don’t just run; run with a purpose.
 
-## System design 
+# System design 🧮
 
-![System-Design](img/5.png)
+![System-Design](https://storage.cloud.google.com/github-resourses/5.png?authuser=1)
 
-- System Design Uri: https://excalidraw.com/#json=TOyaIM8phkDAz7M931kPj,YimDKiIDlzacgUpAPAwsdg
+- Documentation describing the API and a description of each service : [swagger-ling](https://app.swaggerhub.com/apis/DenisDyrbalov/Run_App/1.0.0)
 
-## Application Features
+# Application Features 🧨
 
 ### Workout Tracking & Analysis
 - The app records comprehensive workout data including distance, time, speed, heart rate, and more. And provides statistical analysis to help users track their fitness progress and achievements.
@@ -46,7 +46,37 @@ Our mission is simple: to transform running into an unforgettable experience. Jo
 ### GPS Navigation
 - Users can access real-time route and location information, enhancing their running experience and ensuring they stay on track.
 
-## Installation 🏁
+# CI/CD ✅
+
+![Logo](https://storage.cloud.google.com/github-resourses/Zrzut%20ekranu%202024-01-8%20o%2023.49.37.png?authuser=1)
+
+Step 1. Build:
+ -  Checkout the repository.
+ - Set up JDK 20 using the AdoptOpenJDK distribution.
+ - Build the project using Maven, skipping tests.
+Step 2. Tests:
+ - Checkout the repository.
+ - Set up JDK 20.
+ - Run tests using Maven.
+Step 3. Deploy to Docker Hub:
+ - Checkout the repository.
+ - Authenticate with Google using provided credentials.
+ - Install dependencies.
+ - Copy secrets from Google Secret Manager.
+ - Set up Docker Buildx.
+ - Login to Docker Hub.
+ - Build Docker image and push it to Docker Hub.
+Step 4. Deploy to Google Cloud Run:
+ - Checkout the repository.
+ - Authenticate with Google using provided credentials.
+ - Install dependencies.
+ - Copy secrets from Google Secret Manager.
+ - Authenticate Docker with Google Artifact Registry.
+ - Generate a unique hash for the container image tag.
+ - Build and push container to Google Artifact Registry.
+ - Deploy the container to Cloud Run.
+
+# Installation 🏁
 
 To get started with the Run App, follow these steps:
 
@@ -80,20 +110,27 @@ docker-compose down
 
 9. This stops and removes the containers.
 
-## All links available when running the application in docker:
+# All links available for the project:
 
-## Services Swagger
+## Main Swagger(permanent documentation)
+General API documentation for all services, which is done every couple of weeks
 
-- **profile-service:** [http://localhost:4000/swagger-ui/index.html](http://localhost:4000/swagger-ui/index.html)
-- **social-service:** [http://localhost:5000/swagger-ui/index.html](http://localhost:5000/swagger-ui/index.html)
-- **workout-service:** [http://localhost:7000/swagger-ui/index.html](http://localhost:7000/swagger-ui/index.html)
-- **guild-service:** [http://localhost:8000/swagger-ui/index.html](http://localhost:8000/swagger-ui/index.html)
-- **event-service:** [http://localhost:9000/swagger-ui/index.html](http://localhost:9000/swagger-ui/index.html)
-- **shoes-service:** [http://localhost:2222/swagger-ui/index.html](http://localhost:2222/swagger-ui/index.html)
-- **achievement-service:** [http://localhost:3333/swagger-ui/index.html](http://localhost:3333/swagger-ui/index.html)
-- **story-manager-service:** [http://localhost:4444/swagger-ui/index.html](http://localhost:4444/swagger-ui/index.html)
-- **story-progress-service:** [http://localhost:5555/swagger-ui/index.html](http://localhost:5555/swagger-ui/index.html)
-- **storage-service:** [http://localhost:6500/swagger-ui/index.html](http://localhost:6500/swagger-ui/index.html)
+- **main swagger documentation:** [swagger-ling](https://app.swaggerhub.com/apis/DenisDyrbalov/Run_App/1.0.0)
+
+
+## Services Swagger(dynamic documentation)
+Dynamic API documentation that changes during application development and deployment to servers. You need to wait some time for the link to work (10-30 seconds). If after this time the link does not work, it means that we have temporarily turned off the database in the cloud to save money 😁
+
+- **profile-service:** [profile-service-ling-google-cloudrun](https://profile-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **social-service:** [social-service-ling-google-cloudrun](http://localhost:5000/swagger-ui/index.html)
+- **workout-service:** [workout-service-ling-google-cloudrun](https://workout-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **guild-service:** [guild-service-ling-google-cloudrun](https://guild-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **event-service:** [event-service-ling-google-cloudrun](https://event-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **shoes-service:** [shoes-service-ling-google-cloudrun](https://shoes-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **achievement-service:** [achievement-service-ling-google-cloudrun](https://achievement-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **story-manager-service:** [story-manager-service-ling-google-cloudrun](https://story-manager-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **story-progress-service:** [story-progress-service-ling-google-cloudrun](https://story-progress-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
+- **storage-service:** [storage-service-ling-google-cloudrun](https://storage-service-4itoauiicq-lm.a.run.app/swagger-ui/index.html)
 
 ## Additional Services
 
@@ -105,24 +142,20 @@ docker-compose down
 - **Keycloak:** [http://localhost:8080](http://localhost:8080)
 
 
-## Usage 📝
 
-1. Sign in to your account or create a new one if you are a new customer.
-2. Explore the various features and functionalities of the web application.
-3. Perform banking operations, such as checking your account balance, transferring funds, and checking your expenses statistics.
-4. Log out when you are done.
 
-## Technologies Used 💻
+# Technologies Used 💻
 
 - **Frontend:** React.js, Axios
 - **Backend:** Spring Boot, Spring Cloud
-- **Database:** Postgres, MySQL
-- **Authentication:** Bearer Tokens(Keyclock)
+- **Google cloud :** Cloud Run, Container Registry, Google Secrets, IAM, SQL
+- **DevOps tools :** Docker, GitHub Actions, Shell Scripts, Grafana, Zipkin, Prometheus
+- **Database:** Postgres, MongoDB
 - **CSS Framework:** React Css modules
-- **Aditional Technologies:** Docker, Swagger, Adminer, Google Cloud
+- **Aditional Technologies:** Adminer, Keyclock, 
 
 
-## Contributing 🤝
+# Contributing 🤝
 
 If you would like to contribute to the development of this web application, please follow these guidelines:
 
@@ -132,7 +165,7 @@ If you would like to contribute to the development of this web application, plea
 4. Push your changes to your forked repository: `git push origin feature-name`
 5. Create a pull request to merge your changes into the main repository.
 
-## Contact 📧
+# Contact 📧
 
 If you have any questions or need assistance, please contact any of our team members:
 
@@ -145,11 +178,11 @@ Backend: [Denys Durbalov](https://www.linkedin.com/in/denpool/)
 
 Thank you for using the Your Bank Web Application! 💼🌐
 
-## Presentation
+# Presentation
 
 - Design uri: [figma](https://www.figma.com/file/MS2lV8CQ3amrEmEtQtrnLV/Elemental-Sprints%3A-Chasing-Relics?type=design&node-id=1%3A435&mode=design&t=imPGQNklqepDJPwc-1)
 
-![Introduction](img/1.png)
-![Design](img/2.png)
-![Functions](img/3.png)
-![Team](img/4.png) 😃🎨📋👥
+![Introduction](https://storage.cloud.google.com/github-resourses/1.png?authuser=1)
+![Design](https://storage.cloud.google.com/github-resourses/2.png?authuser=1)
+![Functions](https://storage.cloud.google.com/github-resourses/3.png?authuser=1)
+![Team](https://storage.cloud.google.com/github-resourses/4.png?authuser=1)
