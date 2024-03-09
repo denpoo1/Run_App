@@ -134,14 +134,15 @@ Dynamic API documentation that changes during application development and deploy
 
 ## Additional Services
 
-- **Prometheus:** [http://localhost:9090](http://localhost:9090)
-- **Adminer:** [http://localhost:5656](http://localhost:5656)
-- **Zipkin:** [http://localhost:9411](http://localhost:9411)
-- **Eureka:** [http://localhost:7777](http://localhost:7777)
-- **Grafana:** [http://localhost:8888](http://localhost:8888)
-- **Keycloak:** [http://localhost:8080](http://localhost:8080)
+- **Prometheus:** [prometheus-uri](http://34.116.243.166:80)
+- **Grafana:** [grafana-uri](http://34.116.243.166:3000)
+- **Keycloak:** [keycloak-uri](https://lemur-14.cloud-iam.com/auth/admin/runapp-keycloak/console/)
 
-
+| Service-Name | Username | Password       | URI                                                                | Permission |
+|--------------|----------|----------------|--------------------------------------------------------------------|------------|
+| Grafana      | admin    | Denis25032001_ | http://34.116.243.166:80                                           | read       |
+| Prometheus   | none     | none           | http://34.116.243.166:3000                                         | read       |
+| Keycloak     | admin    | Denis25032001_ | https://lemur-14.cloud-iam.com/auth/admin/runapp-keycloak/console/ | read       |
 
 
 # Technologies Used 💻
@@ -150,7 +151,7 @@ Dynamic API documentation that changes during application development and deploy
 - **Backend:** Spring Boot, Spring Cloud
 - **Google cloud :** Cloud Run, Container Registry, Google Secrets, IAM, SQL
 - **DevOps tools :** Docker, GitHub Actions, Shell Scripts, Grafana, Zipkin, Prometheus
-- **Database:** Postgres, MongoDB
+- **Database:** Postgres, MongoDB, Redis
 - **CSS Framework:** React Css modules
 - **Aditional Technologies:** Adminer, Keyclock, 
 
@@ -169,11 +170,13 @@ If you would like to contribute to the development of this web application, plea
 
 If you have any questions or need assistance, please contact any of our team members:
 
-Frontend: [Illia Martynov](https://www.linkedin.com/in/illia-martynov-335800283/)
-
-Backend: [Sviatoslav Pylyp](https://www.linkedin.com/in/denpool/)
-
 Backend: [Denys Durbalov](https://www.linkedin.com/in/denpool/)
+
+Backend: [Maxim Makhrevych](https://www.linkedin.com/in/denpool/)
+
+Backend: [Sviatoslav Pylyp](https://www.linkedin.com/in/sviatoslav-pylyp/)
+
+Android: [Denis Shulgin](https://www.linkedin.com/in/denpool/)
 
 
 Thank you for using the Your Bank Web Application! 💼🌐
