@@ -140,8 +140,8 @@ Dynamic API documentation that changes during application development and deploy
 
 | Service-Name | Username | Password       | URI                                                                | Permission |
 |--------------|----------|----------------|--------------------------------------------------------------------|------------|
-| Grafana      | view     | view           | http://34.116.243.166:80                                           | read       |
-| Prometheus   | none     | none           | http://34.116.243.166:3000                                         | read       |
+| Grafana      | view     | view           | http://34.116.243.166:3000                                         | read       |
+| Prometheus   | none     | none           | http://34.116.243.166:80                                           | read       |
 | Keycloak     | admin    | Denis25032001_ | https://lemur-14.cloud-iam.com/auth/admin/runapp-keycloak/console/ | read       |
 
 
