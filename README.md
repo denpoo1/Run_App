@@ -172,7 +172,7 @@ If you have any questions or need assistance, please contact any of our team mem
 
 Backend: [Denys Durbalov](https://www.linkedin.com/in/denpool/)
 
-Backend: [Maxim Makhrevych](https://www.linkedin.com/in/denpool/)
+Backend: [Max Makhrevych](https://www.linkedin.com/in/maksym-makhrevych-876639298)
 
 Backend: [Sviatoslav Pylyp](https://www.linkedin.com/in/sviatoslav-pylyp/)
 
