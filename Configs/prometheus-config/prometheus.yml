@@ -114,3 +114,11 @@ scrape_configs:
       - targets: ['storage-service:6500']
         labels:
           application: 'StorageService Application'
+
+  - job_name: 'notification-service'
+    metrics_path: 'actuator/prometheus'
+    static_configs:
+      - targets: ['notification-service:9999']
+        labels:
+          application: 'NotificationService Application'
+
